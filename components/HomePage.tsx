@@ -11,17 +11,17 @@ export default function Home() {
                 {/* Decorative background */}
                 <div className="absolute -left-32 -top-32 h-96 w-96 rounded-full bg-blue-200/30 blur-3xl" />
 
-                <div className="absolute -bottom-32 -right-32 h-96 w-96 rounded-full bg-purple-200/30 blur-3xl" />
+                <div className="absolute -bottom-32 -right-32 h-96 w-96 rounded-full bg-blue-200/30 blur-3xl" />
 
-                <div className="relative mx-auto flex min-h-[calc(100vh-80px)] max-w-7xl items-center px-6 py-20">
+                <div className="relative mx-auto flex min-h-[calc(100svh-80px)] max-w-7xl items-center px-6 py-20">
 
                     <div className="grid w-full items-center gap-16 md:grid-cols-2">
 
                         {/* Image */}
-                        <div className="relative flex justify-center">
+                        <div className="relative order-2 flex justify-center md:order-1">
 
                             {/* Image background */}
-                            <div className="absolute h-72 w-72 rounded-full bg-blue-100 md:h-96 md:w-96" />
+                            <div className="absolute h-[300px] w-[300px] rounded-full bg-blue-100 md:h-[460px] md:w-[460px]" />
 
                             <div className="relative">
                                 <Image
@@ -30,7 +30,8 @@ export default function Home() {
                                     width={420}
                                     height={420}
                                     priority
-                                    className="relative rounded-full object-cover shadow-2xl"
+                                    sizes="(max-width: 768px) 280px, 420px"
+                                    className="relative aspect-square w-[280px] rounded-full object-cover shadow-2xl md:w-[420px]"
                                 />
 
                                 {/* Floating label */}
@@ -48,13 +49,9 @@ export default function Home() {
                         </div>
 
                         {/* Content */}
-                        <div>
+                        <div className="order-1 md:order-2">
 
-                            {/* <span className="text-sm font-semibold uppercase tracking-[0.3em] text-blue-600">
-                                Who are we?
-                            </span> */}
-
-                            <h1 className="mt-4 text-5xl font-bold leading-tight text-gray-900 md:text-6xl lg:text-7xl">
+                            <h1 className="text-5xl font-bold leading-tight text-gray-900 md:text-6xl lg:text-7xl">
                                 Company
                                 <span className="block text-blue-600">
                                     Overview

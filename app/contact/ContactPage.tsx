@@ -7,6 +7,55 @@ import { ImPhone } from 'react-icons/im'
 export default function Contact(){
     const [loading, setLoading] = useState(false)
 
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        message: '',
+    })
+    const [status, setStatus] = useState<{
+        type: 'success' | 'error' | null;
+        message: string;
+    }>({type: null, message: ''});
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        //step 1
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value,
+        })
+    };
+
+    const handleSubmit = async (e: React.FormEvent) =>{
+        e.preventDefault();
+        setLoading(true);
+        setStatus({type: null, message: ''});
+
+        try {
+            const response = await fetch("/api/send", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+
+            const data = await response.json();
+
+            if(!response.ok){
+                throw new Error(data.error || 'Failed to send message');
+            }
+            setStatus({type: 'success', message: 'Message sent successfully! we\'ll get back to you soon.'});
+            setFormData({name: '', email: '', message: ''});
+        } catch (error){
+            setStatus({
+                type: 'error',
+                message: error instanceof Error ? error.message : 'Failed to send message',
+            });
+        } finally {
+            setLoading(false)
+        }
+    }
+
     return (
         <main className="min-h-screen bg-gray-50 px-6 py-16">
             {/*Page title*/}
@@ -75,7 +124,7 @@ export default function Contact(){
                 </div>
                 {/*Form*/}
                 <div>
-                    <form className="space-y-6">
+                    <form onSubmit={handleSubmit}className="space-y-6">
 
                         {/* Name */}
                         <div>
@@ -91,8 +140,10 @@ export default function Contact(){
                                 name="name"
                                 type="text"
                                 required
+                                onChange={handleChange}
+                                value={formData.name}
                                 placeholder="e.g John Tembo"
-                                className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
+                                className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-black"
                             />
                         </div>
 
@@ -110,8 +161,10 @@ export default function Contact(){
                                 name="email"
                                 type="email"
                                 required
+                                value={formData.email}
+                                onChange={handleChange}
                                 placeholder="eg@example.com"
-                                className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
+                                className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-black"
                             />
                         </div>
 
@@ -129,8 +182,10 @@ export default function Contact(){
                                 name="message"
                                 rows={5}
                                 required
+                                value={formData.message}
+                                onChange={handleChange}
                                 placeholder="Message here...."
-                                className="w-full resize-none rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
+                                className="w-full resize-none rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-black"
                             />
                         </div>
 
