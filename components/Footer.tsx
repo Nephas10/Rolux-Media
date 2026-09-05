@@ -79,9 +79,9 @@ export default function Footer(){
 
             <section>
                 <h4 className="mb-4 text-lg font-semibold">Social Links</h4>
-                <FaFacebook className=""/><Link href="https://web.facebook.com/RoluxMedia1">Rolux Media</Link>
+                <FaFacebook className=""/><Link href="https://web.facebook.com/RoluxMedia1" target="_blank">Rolux Media</Link>
 
-                <AiOutlineInstagram className=""/><Link href="https://www.instagram.com/roluxmediaofficial">Rolux Media Offical</Link>
+                <AiOutlineInstagram className=""/><Link href="https://www.instagram.com/roluxmediaofficial" target="_blank">Rolux Media Offical</Link>
             </section>
 
             </section>
