@@ -10,14 +10,7 @@ export const Services = [
         title: "Videography",
         description:
             "We capture and produce high-quality videos for events, businesses, and special moments.",
-        image: "/rolux/services/videography.jpg",
-    },
-
-    {
-        title: "Graphic Design",
-        description:
-            "We create creative and professional designs that communicate your brand and ideas.",
-        image: "/rolux/services/graphic.jpg",
+        image: "/rolux/content.jpg",
     },
 
     {

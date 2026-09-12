@@ -26,7 +26,7 @@ export default function Footer(){
                     
                 </div>
                 <p className="mt-4 max-w-sm text-sm text-gray-400">
-                        Creative media solutions designed to bring your ideas to life.
+                       Royalty and Luxury Re-defined.
                     </p>
             </div>
 
@@ -54,6 +54,11 @@ export default function Footer(){
                             Contact
                         </Link>
                     </li>
+                    <li>
+                        <Link href="/portfolio" className="hover:text-white">
+                           Portfolio
+                        </Link>
+                    </li>
                 </ul>
             </section>
 
@@ -79,9 +84,9 @@ export default function Footer(){
 
             <section>
                 <h4 className="mb-4 text-lg font-semibold">Social Links</h4>
-                <FaFacebook className=""/><Link href="https://web.facebook.com/RoluxMedia1" target="_blank">Rolux Media</Link>
+                <FaFacebook className=""/><Link href="https://web.facebook.com/RoluxMedia1" target="blank">Rolux Media</Link>
 
-                <AiOutlineInstagram className=""/><Link href="https://www.instagram.com/roluxmediaofficial" target="_blank">Rolux Media Offical</Link>
+                <AiOutlineInstagram className=""/><Link href="https://www.instagram.com/roluxmediaofficial" target="blank">Rolux Media Offical</Link>
             </section>
 
             </section>
